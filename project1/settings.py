@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 import dj_database_url
-
+import django_heroku
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,8 +28,9 @@ SECRET_KEY = 'django-insecure-5jf*$jruc0eg14fn=^p+s1ptktnxyo%(1*+$xu&fkc)-bs-a7w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+# ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -55,6 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 ROOT_URLCONF = 'project1.urls'
 
 TEMPLATES = [
@@ -137,5 +140,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# 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 git token
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+
+
+# 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 git token
